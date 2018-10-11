@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:ConverterFormsSample" 
+             x:Class="ConverterFormsSample.MainPage" 
+             xmlns:converter="clr-namespace:ConverterFormsSample.Converters"
+             BackgroundColor="LightGray">
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:NullToVisibilityConverter x:Key="nullToVisibilityConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout VerticalOptions="CenterAndExpand"
+                 Padding="40">
+       
+        <Entry Text="{Binding Name}"/>
+        
+        <Button Text="Enter"
+                IsVisible="{Binding Name, 
+                Converter={StaticResource nullToVisibilityConverter}}"/>
+        
+    </StackLayout>
+</ContentPage>
